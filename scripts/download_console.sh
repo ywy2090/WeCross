@@ -10,7 +10,7 @@ enable_build_from_resource=0
 
 src_dir=$(pwd)'/src/'
 
-wecross_console_url=https://github.com/WeBankFinTech/WeCross-Console.git
+wecross_console_url=https://github.com/ywy2090/WeCross-Console.git
 wecross_console_branch=${default_compatibility_version}
 
 LOG_INFO()
