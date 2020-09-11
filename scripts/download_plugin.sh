@@ -9,10 +9,10 @@ deps_dir=$(pwd)'/plugin/'
 src_dir=$(pwd)'/src/'
 
 
-bcos_stub_url=https://github.com/WeBankFinTech/WeCross-BCOS2-Stub.git
+bcos_stub_url=https://github.com/ywy2090/WeCross-BCOS-Stub.git
 bcos_stub_branch=
 
-fabric_stub_url=https://github.com/WeBankFinTech/WeCross-Fabric1-Stub.git
+fabric_stub_url=https://github.com/ywy2090/WeCross-Fabric1-Stub.git
 fabric_stub_branch=
 
 
@@ -72,7 +72,7 @@ build_plugin_from_source()
     local branch=${3}
     local origin_dir=$(pwd)
 
-    LOG_INFO "Build ${name} from source"
+    LOG_INFO "Build ${name} from source ${url}"
 
     mkdir -p ${src_dir}/
     cd ${src_dir}/
@@ -99,7 +99,7 @@ main()
     local tag=${2}
     case ${name} in
     BCOS2)
-        build_plugin_from_source WeCross-BCOS2-Stub ${bcos_stub_url} ${tag}
+        build_plugin_from_source WeCross-BCOS-Stub ${bcos_stub_url} ${tag}
     ;;
     Fabric1)
         build_plugin_from_source WeCross-Fabric1-Stub ${fabric_stub_url} ${tag}
