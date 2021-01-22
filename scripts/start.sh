@@ -22,12 +22,11 @@ LOG_ERROR() {
     echo -e "\033[31m${content}\033[0m"
 }
 
-create_jvm_security()
-{
-  if [[ ! -f ${SECURIY_FILE} ]];then
-    echo "jdk.disabled.namedCurves = " > ${SECURIY_FILE}
-    # LOG_INFO "create new file ${SECURIY_FILE}"
-  fi
+create_jvm_security() {
+    if [[ ! -f ${SECURIY_FILE} ]]; then
+        echo "jdk.disabled.namedCurves = " >${SECURIY_FILE}
+        # LOG_INFO "create new file ${SECURIY_FILE}"
+    fi
 }
 
 wecross_pid() {
@@ -37,13 +36,13 @@ wecross_pid() {
 run_wecross() {
     if [ "$(uname)" == "Darwin" ]; then
         # Mac
-        nohup java -Djava.security.properties=${SECURIY_FILE} -Djdk.sunec.disableNative="false" -Djdk.tls.namedGroups="secp256k1" -cp ${CLASS_PATH} com.webank.wecross.Service >start.out 2>&1 &
+        nohup java -Djava.security.properties=${SECURIY_FILE} -Djdk.sunec.disableNative="false" -Djdk.tls.namedGroups="secp256k1,x25519,secp256r1,secp384r1,secp521r1,x448,ffdhe2048,ffdhe3072,ffdhe4096,ffdhe6144,ffdhe8192" -cp ${CLASS_PATH} com.webank.wecross.Service >start.out 2>&1 &
     elif [ "$(uname -s | grep MINGW | wc -l)" != "0" ]; then
         # Windows
-        nohup java -Djava.security.properties=${SECURIY_FILE} -Djdk.sunec.disableNative="false" -Djdk.tls.namedGroups="secp256k1" -cp ${WINDS_CLASS_PATH} com.webank.wecross.Service >start.out 2>&1 &
+        nohup java -Djava.security.properties=${SECURIY_FILE} -Djdk.sunec.disableNative="false" -Djdk.tls.namedGroups="secp256k1,x25519,secp256r1,secp384r1,secp521r1,x448,ffdhe2048,ffdhe3072,ffdhe4096,ffdhe6144,ffdhe8192" -cp ${WINDS_CLASS_PATH} com.webank.wecross.Service >start.out 2>&1 &
     else
         # GNU/Linux
-        nohup java -Djava.security.properties=${SECURIY_FILE} -Djdk.sunec.disableNative="false" -Djdk.tls.namedGroups="secp256k1" -cp ${CLASS_PATH} com.webank.wecross.Service >start.out 2>&1 &
+        nohup java -Djava.security.properties=${SECURIY_FILE} -Djdk.sunec.disableNative="false" -Djdk.tls.namedGroups="secp256k1,x25519,secp256r1,secp384r1,secp521r1,x448,ffdhe2048,ffdhe3072,ffdhe4096,ffdhe6144,ffdhe8192" -cp ${CLASS_PATH} com.webank.wecross.Service >start.out 2>&1 &
     fi
 }
 
